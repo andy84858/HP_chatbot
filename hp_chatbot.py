@@ -5,7 +5,7 @@ from langchain.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
 
 # 設置 OpenAI API 密鑰
-os.environ['OPENAI_API_KEY'] = 'YOUR_PERSONAL_OPENAI_API_KEY'
+os.environ['OPENAI_API_KEY'] = 'sk-proj-49ufsRDjIcgDPUvDmKpJT3BlbkFJ2Cc6iuar03CLdlKWGE6A'
 
 # 創建聊天模型
 chat_model = ChatOpenAI(model_name="gpt-4o-mini")
