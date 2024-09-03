@@ -1,0 +1,9 @@
+langchain-community
+langchain-openai
+chromadb
+torch
+transformers
+numpy
+tqdm
+streamlit
+langid
