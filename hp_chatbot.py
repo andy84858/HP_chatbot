@@ -21,10 +21,25 @@ import openai
 openai.api_key = st.secrets.get("OPENAI_API_KEY")
 os.environ["OPENAI_API_KEY"] = openai.api_key
 
-# Setting AWS Credential
-s3 = boto3.client('s3',
-                  AWS_ACCESS_KEY_ID=st.secrets.get("aws_access_key_id"),
-                  AWS_SECRET_ACCESS_KEY=st.secrets.get("aws_secret_access_key"))
+# 設置 AWS 認證
+aws_access_key_id = st.secrets.get("AWS_ACCESS_KEY_ID")
+aws_secret_access_key = st.secrets.get("AWS_SECRET_ACCESS_KEY")
+
+if not aws_access_key_id or not aws_secret_access_key:
+    st.error("AWS credentials not found in secrets. Please add them to your Streamlit secrets.")
+    st.stop()
+
+# 創建 S3 客戶端
+try:
+    s3 = boto3.client('s3',
+                      aws_access_key_id=aws_access_key_id,
+                      aws_secret_access_key=aws_secret_access_key)
+    # 測試 S3 連接
+    s3.list_buckets()
+    st.success("Successfully connected to AWS S3")
+except Exception as e:
+    st.error(f"Error connecting to AWS S3: {str(e)}")
+    st.stop()
 
 @st.cache_resource
 def load_db_from_s3(lang):
