@@ -22,8 +22,8 @@ openai.api_key = st.secrets.get("openai_api_key")
 
 # Setting AWS Credential
 s3 = boto3.client('s3',
-                  aws_access_key_id=st.secrets["aws_access_key_id"],
-                  aws_secret_access_key=st.secrets["aws_secret_access_key"])
+                  aws_access_key_id=st.secrets.get("aws_access_key_id"),
+                  aws_secret_access_key=st.secrets.get("aws_secret_access_key"))
 
 @st.cache_resource
 def load_db_from_s3(lang):
