@@ -8,4 +8,4 @@ tqdm
 streamlit
 langid
 boto3
-sqlite3
+
