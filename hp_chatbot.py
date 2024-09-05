@@ -9,7 +9,11 @@ from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 
 # 設置 OpenAI API 密鑰
 
-os.environ['OPENAI_API_KEY'] = st.secrets["OPENAI_API_KEY"]
+# client = OpenAI(
+#     api_key=st.secrets["OPENAI_API_KEY"]
+# )
+# os.environ['OPENAI_API_KEY'] = st.secrets["OPENAI_API_KEY"]
+client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 # Setting AWS Credential
 s3 = boto3.client('s3',
