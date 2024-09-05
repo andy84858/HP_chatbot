@@ -9,3 +9,4 @@ streamlit
 langid
 boto3
 openai
+pysqlite3-binary
