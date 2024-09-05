@@ -95,9 +95,8 @@ def generate_response(query, language, chat_history):
 
     if language == 'zh':
         prompt_template = ChatPromptTemplate.from_template(
-            "你是一個專門回答關於哈利波特問題的AI助手。請考慮以下對話歷史，並以台灣繁體中文版小說的翻譯名稱回答最新的問題：\n\n"
-            "如果上下文中並未提到具體訊息，請以自身的認知進行回答"
-            "如果超出認知，請具體回答不知道"
+            "你是一個專門回答關於哈利波特問題的AI助手。請考慮以下對話歷史，並以台灣翻譯的繁體中文版小說的內容回答最新的問題：\n\n"
+            "如果上下文中並未提到具體訊息，請回答不知道"
             "對話歷史：\n{history}\n\n"
             "上下文：\n{context}\n\n"
             "Human: {query}\n"
@@ -107,8 +106,7 @@ def generate_response(query, language, chat_history):
         prompt_template = ChatPromptTemplate.from_template(
             "You are an AI assistant specializing in answering questions about Harry Potter. "
             "Please consider the following conversation history and answer the latest question in English:\n\n"
-            "If context contains no specific content, please answer question based on your own understanding"
-            "If question beyond your understanding, please say you don't know"
+            "If context contains no specific content, please answer you don't know"
             "Conversation history:\n{history}\n\n"
             "Context:\n{context}\n\n"
             "Human: {query}\n"
