@@ -18,17 +18,17 @@ import openai
 # )
 # os.environ['OPENAI_API_KEY'] = st.secrets["OPENAI_API_KEY"]
 # client = OpenAI(api_key=st.secrets["openai_api_key"])
-openai.api_key = st.secrets.get("openai_api_key")
+openai.api_key = st.secrets.get("OPENAI_API_KEY")
 os.environ["OPENAI_API_KEY"] = openai.api_key
 
 # Setting AWS Credential
 s3 = boto3.client('s3',
-                  aws_access_key_id=st.secrets.get("aws_access_key_id"),
-                  aws_secret_access_key=st.secrets.get("aws_secret_access_key"))
+                  AWS_ACCESS_KEY_ID=st.secrets.get("aws_access_key_id"),
+                  AWS_SECRET_ACCESS_KEY=st.secrets.get("aws_secret_access_key"))
 
 @st.cache_resource
 def load_db_from_s3(lang):
-    bucket_name = st.secrets["s3_bucket_name"]
+    bucket_name = st.secrets["S3_BUCKET_NAME"]
     file_name = f'hp_{lang}_database.tar.gz'
     local_file = f'/tmp/hp_{lang}_database.tar.gz'
     local_dir = f'/tmp/hp_{lang}_database'
