@@ -6,7 +6,7 @@ import langid
 from langchain.prompts import ChatPromptTemplate
 from langchain_community.vectorstores import Chroma
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
-from openai import OpenAI
+import openai
 __import__('pysqlite3')
 import sys
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
@@ -17,7 +17,8 @@ sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 #     api_key=st.secrets["OPENAI_API_KEY"]
 # )
 # os.environ['OPENAI_API_KEY'] = st.secrets["OPENAI_API_KEY"]
-client = OpenAI(api_key=st.secrets["openai_api_key"])
+# client = OpenAI(api_key=st.secrets["openai_api_key"])
+openai.api_key = st.secrets["openai_api_key"]
 
 # Setting AWS Credential
 s3 = boto3.client('s3',
