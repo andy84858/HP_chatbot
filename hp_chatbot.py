@@ -18,7 +18,7 @@ sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 # )
 # os.environ['OPENAI_API_KEY'] = st.secrets["OPENAI_API_KEY"]
 # client = OpenAI(api_key=st.secrets["openai_api_key"])
-openai.api_key = st.secrets["openai_api_key"]
+openai.api_key = st.secrets.get("openai_api_key")
 
 # Setting AWS Credential
 s3 = boto3.client('s3',
